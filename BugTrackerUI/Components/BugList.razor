@@ -10,15 +10,16 @@
     </tr>
     </thead>
     @foreach(var bug in Bugs)
-            {
-                <tr>
-    <td>@bug.Id</td>
-    <td>@bug.Title</td>
-    <td>@bug.Description</td>
-    <td>@bug.Priority</td>
-                </tr>
-            }
+    {
+        <tr>
+            <td>@bug.Id</td>
+            <td>@bug.Title</td>
+            <td>@bug.Description</td>
+            <td>@bug.Priority</td>
+        </tr>
+    }
 </table>
+
 @code {
     [Inject]
     public IBugService BugService { get; set; }
@@ -27,6 +28,6 @@
 
     protected override void OnInitialized()
     {
-        this.Bugs = this.BugService.GetBugs();
+        this.Bugs = this.BugService.GetBugs().OrderBy(x => x.Priority).ToList();
     }
 }
