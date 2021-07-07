@@ -8,7 +8,7 @@
             <th>Priority</th>
     </tr>
     </thead>
-    @foreach(var bug in this.Bugs.OrderBy(x => x.Priority))
+    @foreach(var bug in this.Bugs)
             {
                 <tr>
     <td>@bug.Id</td>
